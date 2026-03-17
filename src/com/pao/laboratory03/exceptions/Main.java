@@ -58,10 +58,120 @@ package com.pao.laboratory03.exceptions;
  * === e) Throw vs throws ===
  * Metoda process() a aruncat: Vârsta 999 nu este validă (0-150)
  */
+
+import java.util.*;
+
 public class Main {
     public static void main(String[] args) {
-        // TODO: implementează pașii de mai sus
-        // Hint: creează mai întâi InvalidAgeException.java și DuplicateEntryException.java
-    }
-}
 
+        //a
+        riskyMethod();
+        System.out.println();
+
+        //b
+        validateAge(-5);
+        System.out.println();
+        List<String> names = new ArrayList<>(Arrays.asList("Ana", "Ion", "Maria"));
+        addToList(names, "Ana");
+        System.out.println();
+        //c
+        multiCatch(200, names, "Ion");
+        System.out.println();
+        //d
+        catchOrdering(-1);
+        System.out.println();
+        //e
+        try
+        {
+            process(999);
+        }
+        catch(InvalidAgeException e)
+        {
+            System.out.println("Metoda process() a aruncat: " + e.getMessage());
+        }
+
+    }
+        
+    private static void riskyMethod() {
+        try
+        {
+            String s = null;
+            System.out.println(s.length());
+        }
+        catch(NullPointerException e)
+        {
+            System.out.println("Prins: " + e.getMessage());
+        }
+        finally
+        {
+            System.out.println("Finally");
+        }
+    }
+
+    private static void validateAge(int age) {
+        try
+        {
+            if (age < 0 || age > 150) {
+                throw new InvalidAgeException("Varsta " + age + " nu este valida");
+            }
+        }
+        catch(InvalidAgeException e)
+        {
+            System.out.println("InvalidAgeException: " + e.getMessage());
+        }
+    }
+
+    private static void addToList(List<String> list, String name) {
+        try
+        {
+            if(list.contains(name))
+            {
+                throw new DuplicateEntryException("Numele " + name + " exista deja in lista");
+            }
+            else
+            {
+                list.add(name);
+            }
+        }
+        catch(DuplicateEntryException e)
+        {
+            System.out.println("DuplicateEntryException: " + e.getMessage());
+        }
+    }
+
+    private static void multiCatch(int age, List<String> list, String name)
+    {
+        try
+        {
+            validateAge(age);
+            addToList(list, name);
+        }
+        catch(InvalidAgeException | DuplicateEntryException e)
+        {
+            System.out.println("Exceptie prinsa: " + e.getMessage());
+        }
+    }
+
+    private static void catchOrdering(int age)
+    {
+        try
+        {
+            validateAge(age);
+        }
+        catch(InvalidAgeException e)
+        {
+            System.out.println("Specific: " + e.getMessage());
+        }
+        catch(RuntimeException e)
+        {
+            System.out.println("General: " + e.getMessage());
+        }
+    }
+
+    private static void process(int age) throws InvalidAgeException
+    {
+        
+    }                                               
+
+
+}

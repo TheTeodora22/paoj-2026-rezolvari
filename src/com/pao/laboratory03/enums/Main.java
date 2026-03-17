@@ -1,5 +1,4 @@
 package com.pao.laboratory03.enums;
-
 /**
  * Exercițiul 2 — Enum-uri
  *
@@ -46,11 +45,56 @@ package com.pao.laboratory03.enums;
  * MEDIUM: name=MEDIUM, ordinal=1
  * HIGH: name=HIGH, ordinal=2
  * CRITICAL: name=CRITICAL, ordinal=3
+ * 
  */
 public class Main {
     public static void main(String[] args) {
-        // TODO: implementează pașii de mai sus
-        // Hint: creează mai întâi fișierul Priority.java în acest pachet
+        for(Priority p: Priority.values())
+        {
+            System.out.println(p.getEmoji() + " " + p.name() + " (level=" + p.getLevel() + ", color=" + p.getColor() + ")");
+
+        }
+        System.out.println();
+
+        Priority p = Priority.HIGH;
+        switch (p) {
+            case LOW:
+                System.out.println("Prioritate mica");
+                break;
+            case MEDIUM:
+                System.out.println("Prioritate medie");
+                break;
+            case HIGH:
+                System.out.println("Prioritate mare");
+                break;
+            case CRITICAL:
+                System.out.println("CRITIC");
+                break;
+        }
+        System.out.println();
+
+        Priority pstring = Priority.valueOf("HIGH");
+        System.out.println("De la string: " + pstring);
+
+        Priority p1 = Priority.HIGH;
+        Priority p2 = Priority.HIGH;
+        Priority p3 = Priority.LOW;
+        System.out.println();
+
+        if(p1==p2)
+        {
+            System.out.println("HIGH si HIGH sunt egale");
+        }
+        if(p1!=p3)
+        {
+            System.out.println("HIGH si LOW nu sunt egale");
+        }
+        System.out.println();
+
+        for(Priority pr : Priority.values())
+        {
+            System.out.println(pr.name() + " -> ordinal " + pr.ordinal());
+        }
     }
 }
 

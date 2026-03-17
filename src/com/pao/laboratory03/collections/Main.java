@@ -48,9 +48,43 @@ package com.pao.laboratory03.collections;
  * Studenți la PAOJ: [Ana, Mihai, Ion]
  * Studenți la BD (actualizat): [Ana, Elena, George]
  */
+import java.util.*;
+
+
 public class Main {
     public static void main(String[] args) {
-        // TODO: implementează cele 3 părți de mai sus
+        //Partea A
+        String[] words = {"java", "python", "java", "c++", "python", "java", "rust", "c++", "go"};
+        HashMap<String, Integer> freq = new HashMap<>();
+        for(String w : words)
+        {
+            freq.put(w, freq.getOrDefault(w,0)+1);
+        }
+        System.out.println("Map: " + freq);
+        System.out.println("Exista rust? " + freq.containsKey("rust"));
+        System.out.println("Keys " + freq.keySet());
+        System.out.println("Values " + freq.values());
+        for (Map.Entry<String, Integer> entry : freq.entrySet()) {
+            System.out.println("  " + entry.getKey() + " -> " + entry.getValue());
+        }
+
+        // Partea B
+
+        TreeMap<String, Integer> tmap = new TreeMap<>(freq);
+        System.out.println("TreeMap: " + tmap);
+        System.out.println("Prima: " + tmap.firstKey());
+        System.out.println("Ultima: " + tmap.lastKey());
+
+        // Partea C
+
+        HashMap<String, List<String>> scl = new HashMap<> ();
+        scl.put("PAOJ",new ArrayList<>(Arrays.asList("Ana", "Mihai", "Ion")));
+        scl.put("BD",new ArrayList<>( Arrays.asList("Ana", "Elena")));
+         
+        System.out.println("PAOJ: " + scl.get("PAOJ"));
+        scl.get("BD").add("Elena");
+        System.out.println("BD actual: " + scl.get("BD"));
+
     }
 }
 

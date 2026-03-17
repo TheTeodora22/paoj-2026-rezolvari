@@ -1,5 +1,11 @@
 package com.pao.laboratory03.bonus;
 
+import com.pao.laboratory03.bonus.model.Task;
+import com.pao.laboratory03.bonus.model.Priority;
+import com.pao.laboratory03.bonus.model.Status;
+import com.pao.laboratory03.bonus.service.TaskService;
+import com.pao.laboratory03.bonus.exceptii.DuplicateTaskException;
+
 /**
  * Exercițiul 5 (Bonus) — Sistem de gestiune task-uri cu audit log
  *
@@ -155,10 +161,63 @@ package com.pao.laboratory03.bonus;
  */
 public class Main {
     public static void main(String[] args) {
-        // TODO: implementează toți cei 10 pași de mai sus
-        // Creează TOATE clasele necesare în acest pachet (bonus/)
-        // Nu ai subpachete impuse — organizează cum consideri
+        System.out.println("=== Adăugare task-uri ===");
+        TaskService service = TaskService.getInstance();
+        service.addTask("Fix login bug", Priority.CRITICAL);
+        service.addTask("Add dark mode", Priority.LOW);
+        service.addTask("Update docs", Priority.MEDIUM);
+        service.addTask("Fix memory leak", Priority.HIGH);
+        service.addTask("Refactor DB layer", Priority.HIGH);
+        System.out.println("\n=== Asignare ===");
+        service.assignTask("T001", "Ana");
+        service.assignTask("T003", "Mihai");
+        service.assignTask("T004", "Elena");
+        System.out.println("\n=== Schimbări status ===");
+        try {
+            service.changeStatus("T001", Status.IN_PROGRESS);
+            service.changeStatus("T001", Status.DONE);
+            service.changeStatus("T003", Status.IN_PROGRESS);
+            service.changeStatus("T001", Status.TODO);
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("\n=== Task-uri HIGH ===");
+        for(Task t : service.getTasksByPriority(Priority.HIGH)) {
+            System.out.println(t);
+        }
+
+        System.out.println("\n=== Sumar status ===");
+        service.getStatusSummary().forEach((status, count) -> {
+            System.out.println(status + ": " + count);
+        });
+
+        System.out.println("\n=== Task-uri neasignate ===");
+        for(Task t : service.getUnassignedTasks()) {
+            System.out.println(t.getId() + ": " + t.getTitle());
+        }
+
+        System.out.println("\n=== Scor urgență (baseDays=5) ===");
+        System.out.println("Total: " + service.getTotalUrgencyScore(5));
+
+        System.out.println("\n=== Audit Log ===");
+        service.printAuditLog();
+
+        System.out.println("\n=== Excepții ===");
+        try {
+            service.assignTask("T999", "Ioana");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            service.addTaskWithId("T001", "Alt task", Priority.LOW);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
+
 }
 
 
