@@ -9,7 +9,7 @@ public class Checker {
 
         // Sau ruleaza doar testele pentru o parte specifica:
 //        IOTest.runPart("src/com/pao/laboratory07/exercise1/tests", "partA", Main::main);
-//        IOTest.runPart("src/com/pao/laboratory07/exercise1/tests", "partB", Main::main);
-//        IOTest.runPart("src/com/pao/laboratory07/exercise1/tests", "partC", Main::main);
+    //        IOTest.runPart("src/com/pao/laboratory07/exercise1/tests", "partB", Main::main);
+//       IOTest.runPart("src/com/pao/laboratory07/exercise1/tests", "partC", Main::main);
     }
 }
