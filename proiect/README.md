@@ -1,6 +1,6 @@
 # Platformă e-learning - Proiect PAOJ
 
-Proiect individual la "Programare avansata pe Obiecte in Java" - 2026 
+Proiect individual la "Programare avansată pe Obiecte în Java" - 2026
 
 ## Etapa I - Definirea sistemului
 
