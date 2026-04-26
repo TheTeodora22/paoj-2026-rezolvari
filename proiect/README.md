@@ -1,6 +1,6 @@
-# Platformă e-learning — Proiect PAOJ
+# Platformă e-learning - Proiect PAOJ
 
-## Etapa I — Definirea sistemului
+## Etapa I - Definirea sistemului
 
 ### Tipuri de obiecte 
 
