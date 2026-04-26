@@ -1,5 +1,7 @@
 # Platformă e-learning - Proiect PAOJ
 
+Proiect individual la "Programare avansata pe Obiecte in Java" - 2026 
+
 ## Etapa I - Definirea sistemului
 
 ### Tipuri de obiecte 
