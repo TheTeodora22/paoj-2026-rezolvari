@@ -6,9 +6,23 @@
         "srcPaths": [
             "src"
         ],
-//        "mainClass": "com.pao.laboratory06.Test",
         "classpath": [
             "lib/java-diff-utils-4.15.jar"
+        ]
+    },
+    {
+        "type": "java",
+        "name": "Lab12 Main",
+        "request": "launch",
+        "mainClass": "com.pao.laboratory12.Main",
+        "srcPaths": [
+            "src",
+            "src/com/pao/laboratory12/resources"
+        ],
+        "classpath": [
+            "lib/sqlite-jdbc.jar",
+            "lib/slf4j-api.jar",
+            "lib/slf4j-nop.jar"
         ]
     }
 ]
