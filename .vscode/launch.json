@@ -21,6 +21,7 @@
         ],
         "classpath": [
             "lib/sqlite-jdbc.jar",
+            "lib/h2-2.4.240.jar",
             "lib/slf4j-api.jar",
             "lib/slf4j-nop.jar"
         ]
