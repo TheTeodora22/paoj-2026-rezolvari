@@ -6,9 +6,24 @@
         "srcPaths": [
             "src"
         ],
-//        "mainClass": "com.pao.laboratory06.Test",
         "classpath": [
             "lib/java-diff-utils-4.15.jar"
+        ]
+    },
+    {
+        "type": "java",
+        "name": "Proiect Etapa II",
+        "request": "launch",
+        "mainClass": "com.pao.proiect.elearning.Main",
+        "cwd": "${workspaceFolder}/proiect",
+        "srcPaths": [
+            "proiect/src",
+            "proiect/resources"
+        ],
+        "classpath": [
+            "lib/sqlite-jdbc.jar",
+            "lib/slf4j-api.jar",
+            "lib/slf4j-nop.jar"
         ]
     }
 ]
