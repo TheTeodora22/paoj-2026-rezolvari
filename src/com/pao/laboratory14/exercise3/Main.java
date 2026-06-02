@@ -52,20 +52,20 @@ public class Main {
     }
 
     private static int varianta1(List<Eveniment> sortate) {
-        List<Integer> sfarsitSala = new ArrayList<>();
+        List<Integer> rooms = new ArrayList<>();
 
         for (Eveniment e : sortate) {
             int sala = -1;
-            for (int i = 0; i < sfarsitSala.size(); i++) {
-                if (sfarsitSala.get(i) <= e.startMin()) {
+            for (int i = 0; i < rooms.size(); i++) {
+                if (rooms.get(i) <= e.startMin()) {
                     sala = i + 1;
-                    sfarsitSala.set(i, e.endMin());
+                    rooms.set(i, e.endMin());
                     break;
                 }
             }
             if (sala == -1) {
-                sfarsitSala.add(e.endMin());
-                sala = sfarsitSala.size();
+                rooms.add(e.endMin());
+                sala = rooms.size();
             }
 
             System.out.printf(
@@ -76,19 +76,19 @@ public class Main {
                     sala);
         }
 
-        return sfarsitSala.size();
+        return rooms.size();
     }
 
     private static int varianta2(List<Eveniment> sortate) {
-        PriorityQueue<Integer> sfarsitSali = new PriorityQueue<>();
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
 
         for (Eveniment e : sortate) {
-            if (!sfarsitSali.isEmpty() && sfarsitSali.peek() <= e.startMin()) {
-                sfarsitSali.poll();
+            if (!pq.isEmpty() && pq.peek() <= e.startMin()) {
+                pq.poll();
             }
-            sfarsitSali.offer(e.endMin());
+            pq.offer(e.endMin());
         }
 
-        return sfarsitSali.size();
+        return pq.size();
     }
 }
